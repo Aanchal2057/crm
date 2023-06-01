@@ -20,14 +20,12 @@ return new class extends Migration
             $table->double('lat');
             $table->double('long');
             $table->date('initial_date');
-            $table->date('expirationdate')->nullable();
-            $table->boolean('expire')->default(false);
+            $table->date('expirationdate');
+            $table->date('today_date');
+            $table->boolean('expire');
             $table->integer('user_id');
             $table->timestamps();
         });
-
-        // Set expirationdate column value based on initial_date + 1 year
-        \Illuminate\Support\Facades\DB::statement('UPDATE customers SET expirationdate = DATE_ADD(initial_date, INTERVAL 1 YEAR)');
     }
 
     /**

@@ -16,6 +16,16 @@ class CustomerController extends Controller
         $customer->lat = $request->lat;
         $customer->long = $request->long;
         $customer->initial_date = $request->initial_date;
+        $expirationDate = date('Y-m-d', strtotime('+1 year', strtotime($request->initial_date)));
+        $customer->expirationdate = $expirationDate;
+        $today_date=date('Y-m-d');
+        $customer->today_date = $today_date;
+        if ($today_date === $expirationDate) {
+            $customer->expire = true;
+        } else {
+            $customer->expire = false;
+        }
+    
         $customer->user_id= $request->user_id;
         $customer->save();
       
