@@ -15,7 +15,7 @@ class CustomerController extends Controller
         $customer->address = $request->address;
         $customer->lat = $request->lat;
         $customer->long = $request->long;
-        $customer->initial_date = $request->date;
+        $customer->initial_date = $request->initial_date;
         $customer->user_id= $request->user_id;
         $customer->save();
       
